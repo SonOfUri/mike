@@ -68,6 +68,7 @@
       width: 100vw;
       height: 100vh;
       z-index: 999;
+      background-image: url(/gif1.gif);
       background-color: #000;
       background-position: center;
       background-size: cover;
@@ -76,28 +77,28 @@
       justify-content: center;
     }
 
-    #intro-video {
+    /* #intro-video {
       width: 100vw;
       height: 100vh;
-    }
+    } */
 
     #content {
       display: none;
     }
 
-    @media screen and (max-width: 600px) {
+    /* @media screen and (max-width: 600px) {
       #intro-video {
       width: 500vw;
       height: 100vh;
     }
-    }
+    } */
   </style>
 
   <div id="video-container">
-    <video id="intro-video"  autoplay>
+    <!-- <video id="intro-video"  autoplay>
       <source src="vid2.mp4" type="video/mp4">
       Your browser does not support the video tag.
-    </video>
+    </video> -->
   </div>
 
 
@@ -237,18 +238,16 @@
                 }
 
                 @media screen and (max-width: 1000px) {
-                  .u-class-1{
+                  .u-class-1 {
                     width: 50%;
                   }
                 }
 
                 @media screen and (max-width: 600px) {
-                  .u-class-1{
+                  .u-class-1 {
                     width: 25%;
                   }
                 }
-
-
               </style>
               <div class="jasda">
                 <h1 style="margin-bottom:20px;font-size:40px;font-family: fro;">
@@ -676,7 +675,7 @@
   <script src="global-uploads.webflow.com/62b03f7c4e77803f83b758a2/js/webflow.5d9051ab4.js"
     type="text/javascript"></script>
 
-  <script>
+  <!-- <script>
     document.getElementById('intro-video').addEventListener('ended', function () {
       // This code will run when the video has ended
       document.getElementById('video-container').style.display = 'none';
@@ -700,6 +699,16 @@
     // Add a listener for various user interactions (e.g., click, mousemove)
     document.addEventListener('click', startVideoOnInteraction);
     document.addEventListener('mousemove', startVideoOnInteraction);
+
+  </script> -->
+
+  <script>
+    // Hide the video and display the content after 10 seconds
+    setTimeout(function () {
+      document.getElementById('video-container').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      document.getElementById('intro-video').pause(); // Pause the video
+    }, 5000); // 10000 milliseconds = 10 seconds
 
   </script>
 </body>
