@@ -68,7 +68,7 @@
       width: 100vw;
       height: 100vh;
       z-index: 999;
-      background-color:#000;
+      background-color: #000;
       background-position: center;
       background-size: cover;
       display: flex;
@@ -84,10 +84,17 @@
     #content {
       display: none;
     }
+
+    @media screen and (max-width: 600px) {
+      #intro-video {
+      width: 500vw;
+      height: 100vh;
+    }
+    }
   </style>
 
   <div id="video-container">
-    <video id="intro-video" autoplay  loop>
+    <video id="intro-video"  autoplay>
       <source src="vid2.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -228,6 +235,20 @@
                     margin-top: 100px;
                   }
                 }
+
+                @media screen and (max-width: 1000px) {
+                  .u-class-1{
+                    width: 50%;
+                  }
+                }
+
+                @media screen and (max-width: 600px) {
+                  .u-class-1{
+                    width: 25%;
+                  }
+                }
+
+
               </style>
               <div class="jasda">
                 <h1 style="margin-bottom:20px;font-size:40px;font-family: fro;">
@@ -257,7 +278,7 @@
 
             </div>
             <div>
-              <div>
+              <div class="u-class-1">
                 <img src="default/logo.png" />
               </div>
             </div>
@@ -656,13 +677,29 @@
     type="text/javascript"></script>
 
   <script>
-    // Hide the video and display the content after 10 seconds
-setTimeout(function() {
-    document.getElementById('video-container').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-    document.getElementById('intro-video').pause(); // Pause the video
-}, 30000); // 10000 milliseconds = 10 seconds
+    document.getElementById('intro-video').addEventListener('ended', function () {
+      // This code will run when the video has ended
+      document.getElementById('video-container').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    });
+  </script>
 
+  <script>
+    // Function to start the video and handle interaction
+    function startVideoOnInteraction() {
+      const video = document.getElementById('intro-video');
+      video.play(); // Start the video
+
+      // Hide the video and display the content after the video has ended
+      video.addEventListener('ended', function () {
+        document.getElementById('video-container').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      });
+    }
+
+    // Add a listener for various user interactions (e.g., click, mousemove)
+    document.addEventListener('click', startVideoOnInteraction);
+    document.addEventListener('mousemove', startVideoOnInteraction);
 
   </script>
 </body>
