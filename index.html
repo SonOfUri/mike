@@ -15,7 +15,7 @@
     content=" $SBF is a confident, loyal, and accomplished Boxer whose pride in his work shines bright." />
   <meta property="og:image" content="default/logo.png" />
 
- <link rel="shortcut icon" href="default/sbf-coin.png" type="image/x-icon">
+  <link rel="shortcut icon" href="default/sbf-coin.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&amp;display=swap"
@@ -57,44 +57,31 @@
 <body>
 
   <style>
-    #video-container {
+    #image-container {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       z-index: 999;
-      /* background-image: url(/gif2.gif); */
       background-color: #000;
-      background-position: center;
-      background-size: cover;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    #intro-video {
-      width: 100vw;
-      height: 100vh;
+    #image-container img {
+      max-width: 100%;
+      max-height: 100%;
     }
 
     #content {
       display: none;
     }
-
-    /* @media screen and (max-width: 600px) {
-      #intro-video {
-      width: 500vw;
-      height: 100vh;
-    }
-    } */
   </style>
 
-  <div id="video-container">
-    <video id="intro-video"  autoplay>
-      <source src="vid2.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <div id="image-container">
+    <img src="/latestgif.gif" alt="Your GIF">
   </div>
 
 
@@ -274,7 +261,7 @@
             </div>
             <div>
               <div class="u-class-1">
-                <img src="default/sbf.jpg" />
+                <img src="default/logo.png" />
               </div>
             </div>
           </div>
@@ -672,44 +659,19 @@
     type="text/javascript"></script>
 
   <script>
-document.getElementById('intro-video').addEventListener('ended', function() {
-    // This code will run when the video has ended
-    document.getElementById('video-container').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-    this.muted = true; // Mute the video
-});
+    const imageContainer = document.getElementById('image-container');
+    const contentContainer = document.getElementById('content');
 
-  </script>
-
- 
-  <script>
-    // Function to start the video and handle interaction
-    function startVideoOnInteraction() {
-      const video = document.getElementById('intro-video');
-      video.play(); // Start the video
-
-      // Hide the video and display the content after the video has ended
-      video.addEventListener('ended', function () {
-        document.getElementById('video-container').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-      });
+    function hideImageContainerAndShowContent() {
+      imageContainer.style.display = 'none';
+      contentContainer.style.display = 'block';
     }
 
-    // Add a listener for various user interactions (e.g., click, mousemove)
-    document.addEventListener('click', startVideoOnInteraction);
-    document.addEventListener('mousemove', startVideoOnInteraction);
+    // Set a timeout to hide the image container and show the content after 10 seconds
+    setTimeout(hideImageContainerAndShowContent, 2000); // 10000 milliseconds = 10 seconds
 
-  </script> 
 
-  <!-- <script>
-    // Hide the video and display the content after 10 seconds
-    setTimeout(function () {
-      document.getElementById('video-container').style.display = 'none';
-      document.getElementById('content').style.display = 'block';
-      document.getElementById('intro-video').pause(); // Pause the video
-    }, 20000); // 10000 milliseconds = 10 seconds
-
-  </script>  -->
+  </script>
 </body>
 
 
